@@ -67,8 +67,8 @@ struct Page1View: View {
                         }
                         .background(Color.white)
                         .cornerRadius(24)
-                        .padding(.top, safeTop + 40)
-                        .padding(.bottom, safeBottom + 40)
+                        .padding(.top, 80)
+                        .padding(.bottom, 80)
                         .frame(width: gridWidth)
                         
                         // Right scrubber
