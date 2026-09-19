@@ -27,6 +27,7 @@ struct Page2View: View {
                     }
                     .position(circlePosition)
                     .onTapGesture {
+                        UIPasteboard.general.string = item.emoji
                         randomize(in: geo.size)
                     }
                 }
