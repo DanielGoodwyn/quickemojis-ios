@@ -2,6 +2,7 @@ import SwiftUI
 import AVFoundation
 
 struct Page1View: View {
+    @Environment(\.colorScheme) private var colorScheme
     let emojis = EmojiData.shared.emojis
     @State private var showToast = false
     @State private var toastEmoji = ""
@@ -15,12 +16,16 @@ struct Page1View: View {
     ]
     
     var body: some View {
+        let isDark = colorScheme == .dark
+        let outerColor = isDark ? Color.white : Color.black
+        let innerColor = isDark ? Color.black : Color.white
+        
         GeometryReader { geo in
             let safeTop = geo.safeAreaInsets.top
             let safeBottom = geo.safeAreaInsets.bottom
             
             ZStack {
-                Color.black.ignoresSafeArea()
+                outerColor.ignoresSafeArea()
                 
                 ScrollViewReader { proxy in
                     let scrubGesture = DragGesture(minimumDistance: 0)
@@ -65,7 +70,7 @@ struct Page1View: View {
                             .padding(10)
                             .padding(.top, 20)
                         }
-                        .background(Color.white)
+                        .background(innerColor)
                         .cornerRadius(24)
                         .padding(.top, 80)
                         .padding(.bottom, 80)
